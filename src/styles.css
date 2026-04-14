@@ -203,7 +203,7 @@ iframe {
 
 .hero-layout {
   grid-template-columns: 1.08fr 0.92fr;
-  align-items: center;
+  align-items: start;
 }
 
 .hero-copy h1,
@@ -259,6 +259,11 @@ iframe {
   display: flex;
   flex-wrap: wrap;
   gap: 0.9rem;
+}
+
+.hero-visual {
+  display: grid;
+  gap: 1rem;
 }
 
 .hero-kicker {
@@ -349,6 +354,78 @@ iframe {
   position: relative;
   overflow: hidden;
   padding: 1.8rem;
+}
+
+.hero-photo-stage {
+  display: grid;
+  gap: 1rem;
+}
+
+.hero-main-photo,
+.hero-photo-card,
+.showcase-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: var(--shadow);
+}
+
+.hero-main-photo {
+  position: relative;
+  min-height: 380px;
+}
+
+.hero-main-photo img {
+  height: 100%;
+  min-height: 380px;
+  object-fit: cover;
+}
+
+.hero-photo-overlay {
+  position: absolute;
+  left: 1.25rem;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, rgba(8, 28, 46, 0.08), rgba(8, 28, 46, 0.72));
+  backdrop-filter: blur(10px);
+  color: white;
+}
+
+.hero-photo-overlay strong {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+.hero-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.hero-photo-card {
+  display: grid;
+}
+
+.hero-photo-card img {
+  height: 190px;
+  object-fit: cover;
+}
+
+.hero-photo-card div {
+  padding: 1rem 1.1rem 1.15rem;
+}
+
+.hero-photo-card p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  line-height: 1.65;
 }
 
 .hero-panel::after {
@@ -475,6 +552,36 @@ iframe {
 .signal-card h3 {
   margin-top: 0.2rem;
   font-size: 1.2rem;
+}
+
+.visual-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.showcase-card {
+  display: grid;
+}
+
+.showcase-card img {
+  height: 260px;
+  object-fit: cover;
+}
+
+.showcase-copy {
+  padding: 1.2rem 1.25rem 1.35rem;
+}
+
+.showcase-copy h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.2rem;
+}
+
+.showcase-copy p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.72;
 }
 
 .timeline-item {
@@ -689,7 +796,12 @@ iframe {
   .info-grid,
   .metric-row,
   .testimonial-grid,
-  .blog-grid {
+  .blog-grid,
+  .visual-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-photo-grid {
     grid-template-columns: 1fr;
   }
 
@@ -739,6 +851,11 @@ iframe {
   .hero-inline-stats div,
   .hero-metrics article {
     min-width: 100%;
+  }
+
+  .hero-main-photo,
+  .hero-main-photo img {
+    min-height: 300px;
   }
 
   .timeline-item {

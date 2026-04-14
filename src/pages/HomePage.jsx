@@ -8,6 +8,15 @@ const marketStats = [
   { value: "Buyer-first", label: "advisory style" },
 ];
 
+const marketImages = {
+  aerialPlots:
+    "https://images.unsplash.com/photo-1720175369915-d941b2394228?auto=format&fit=crop&w=1400&q=80",
+  residentialGrid:
+    "https://images.unsplash.com/photo-1647313063997-f6afa7e30157?auto=format&fit=crop&w=1200&q=80",
+  industrialCorridor:
+    "https://images.unsplash.com/photo-1758304481620-464b33d5e4dd?auto=format&fit=crop&w=1400&q=80",
+};
+
 const benefits = [
   {
     title: "Location logic over hype",
@@ -81,6 +90,27 @@ const testimonials = [
   },
 ];
 
+const visualShowcase = [
+  {
+    title: "Aerial plot perspective",
+    text: "A stronger first impression starts with visible land patterns, access routes, and surrounding context.",
+    image: marketImages.aerialPlots,
+    alt: "Aerial view of divided land parcels and connecting roadways",
+  },
+  {
+    title: "Residential planning context",
+    text: "Professional real estate presentation should reflect how buyers think about layout, usability, and nearby development.",
+    image: marketImages.residentialGrid,
+    alt: "Aerial view of a residential-style development layout",
+  },
+  {
+    title: "Industrial growth corridor",
+    text: "Infrastructure and surrounding economic activity are part of the decision story, not just the plot itself.",
+    image: marketImages.industrialCorridor,
+    alt: "Aerial view of industrial buildings and surrounding development",
+  },
+];
+
 export default function HomePage() {
   return (
     <>
@@ -127,6 +157,40 @@ export default function HomePage() {
           </div>
 
           <div className="hero-visual" data-reveal>
+            <div className="hero-photo-stage">
+              <article className="hero-main-photo">
+                <img
+                  src={marketImages.industrialCorridor}
+                  alt="Aerial view of industrial buildings and logistics-focused development"
+                />
+                <div className="hero-photo-overlay">
+                  <span className="hero-note-label">Market View</span>
+                  <strong>Development-backed land stories need visual context.</strong>
+                </div>
+              </article>
+              <div className="hero-photo-grid">
+                <article className="hero-photo-card">
+                  <img
+                    src={marketImages.aerialPlots}
+                    alt="Aerial view of planned land divisions with access roads"
+                  />
+                  <div>
+                    <span className="hero-note-label">Land Layout</span>
+                    <p>Plot positioning and access routes should be easy to understand.</p>
+                  </div>
+                </article>
+                <article className="hero-photo-card">
+                  <img
+                    src={marketImages.residentialGrid}
+                    alt="Aerial view of an organized residential development pattern"
+                  />
+                  <div>
+                    <span className="hero-note-label">Urban Pattern</span>
+                    <p>Professional presentation should show how surrounding development may evolve.</p>
+                  </div>
+                </article>
+              </div>
+            </div>
             <div className="hero-panel glass-card">
               <p className="eyebrow">Executive Snapshot</p>
               <h2>Structured guidance for a market where discipline matters more than excitement.</h2>
@@ -157,6 +221,28 @@ export default function HomePage() {
                 <p>That is where our evaluation process starts.</p>
               </article>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-alt">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Visual Market Story"
+            title="Imagery that makes the investment narrative feel more credible"
+            description="Professional real estate websites use visuals to reinforce planning, access, and development context. These image blocks help the homepage feel closer to that standard."
+            align="center"
+          />
+          <div className="visual-showcase-grid">
+            {visualShowcase.map((item) => (
+              <article className="showcase-card" key={item.title} data-reveal>
+                <img src={item.image} alt={item.alt} loading="lazy" />
+                <div className="showcase-copy">
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>

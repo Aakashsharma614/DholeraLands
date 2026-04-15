@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Meta from "../components/Meta";
-import SectionHeader from "../components/SectionHeader";
 
 const marketStats = [
   { value: "Long-term", label: "investment horizon" },
@@ -14,7 +13,7 @@ const marketImages = {
   residentialGrid:
     "https://images.unsplash.com/photo-1647313063997-f6afa7e30157?auto=format&fit=crop&w=1200&q=80",
   industrialCorridor:
-    "https://images.unsplash.com/photo-1758304481620-464b33d5e4dd?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1758304481620-464b33d5e4dd?auto=format&fit=crop&w=1600&q=80",
 };
 
 const benefits = [
@@ -90,26 +89,9 @@ const testimonials = [
   },
 ];
 
-const visualShowcase = [
-  {
-    title: "Aerial plot perspective",
-    text: "A stronger first impression starts with visible land patterns, access routes, and surrounding context.",
-    image: marketImages.aerialPlots,
-    alt: "Aerial view of divided land parcels and connecting roadways",
-  },
-  {
-    title: "Residential planning context",
-    text: "Professional real estate presentation should reflect how buyers think about layout, usability, and nearby development.",
-    image: marketImages.residentialGrid,
-    alt: "Aerial view of a residential-style development layout",
-  },
-  {
-    title: "Industrial growth corridor",
-    text: "Infrastructure and surrounding economic activity are part of the decision story, not just the plot itself.",
-    image: marketImages.industrialCorridor,
-    alt: "Aerial view of industrial buildings and surrounding development",
-  },
-];
+function revealDelay(index, offset = 0) {
+  return { "--reveal-delay": `${offset + index * 90}ms` };
+}
 
 export default function HomePage() {
   return (
@@ -119,106 +101,112 @@ export default function HomePage() {
         description="Explore original real estate insights, plotted opportunities, and investor guidance around Dholera Smart City with dholeralands."
       />
 
-      <section className="hero">
-        <div className="container hero-layout">
-          <div className="hero-copy" data-reveal>
-            <div className="hero-kicker">
-              <p className="eyebrow">Strategic Land Advisory</p>
-              <span className="hero-chip">Dholera Smart City Focus</span>
+      <section className="home-hero">
+        <img
+          className="home-hero-image"
+          src={marketImages.industrialCorridor}
+          alt="Aerial view of industrial buildings and logistics-focused development near Dholera"
+        />
+        <div className="home-hero-overlay" />
+        <div className="container home-hero-content">
+          <div className="home-hero-copy" data-reveal="left">
+            <div className="home-hero-topline">
+              <span className="home-badge">Dholera Smart City Focus</span>
+              <span className="home-badge home-badge-muted">Investor-first land advisory</span>
             </div>
-            <h1>Professional land investment guidance for buyers looking at Dholera seriously.</h1>
-            <p className="hero-text">
-              dholeralands helps investors evaluate plotted opportunities around Dholera through clear
-              market framing, disciplined shortlisting, and practical decision support designed to reduce
-              noise and improve confidence.
+            <p className="eyebrow">Professional Land Guidance</p>
+            <h1>Find the Dholera opportunity that actually fits your long-term strategy.</h1>
+            <p className="home-hero-text">
+              dholeralands helps buyers evaluate plotted opportunities through clearer market framing,
+              documentation-led screening, and practical support that reduces noise before capital is
+              committed.
             </p>
-            <div className="hero-actions">
+            <div className="home-hero-actions">
               <Link className="button button-primary" to="/contact">
-                Book a Strategic Call
+                Get Strategic Guidance
               </Link>
-              <a className="button button-secondary" href="#why-dholera">
-                View Investment Lens
+              <a className="button button-secondary" href="#investment-lens">
+                Explore The Market Lens
               </a>
             </div>
-            <div className="hero-summary">
-              <p>
-                For buyers comparing Dholera opportunities, the real edge is not speed. It is clarity on
-                location logic, paperwork quality, and long-horizon suitability before capital is committed.
-              </p>
+            <div className="hero-search-panel" data-reveal style={revealDelay(1, 120)}>
+              <div>
+                <span>Focus Area</span>
+                <strong>Dholera plotted land</strong>
+              </div>
+              <div>
+                <span>Buyer Type</span>
+                <strong>NRI, family, and long-term investors</strong>
+              </div>
+              <Link className="button button-primary" to="/contact">
+                Book A Call
+              </Link>
             </div>
-            <div className="hero-inline-stats">
-              {marketStats.map((stat) => (
-                <div key={stat.label}>
-                  <strong>{stat.value}</strong>
-                  <span>{stat.label}</span>
+          </div>
+
+          <div className="home-hero-aside" data-reveal="right" style={revealDelay(2, 120)}>
+            <article className="hero-floating-card hero-market-card">
+              <span className="hero-card-label">Executive Snapshot</span>
+              <strong>Clarity beats urgency in emerging land markets.</strong>
+              <p>
+                The better Dholera decision comes from testing location logic, documents, and time horizon
+                before reacting to marketing hype.
+              </p>
+            </article>
+            <article className="hero-floating-card hero-contact-card">
+              <span className="hero-card-label">Speak With dholeralands</span>
+              <strong>+91 98713 66609</strong>
+              <p>Guidance for serious buyers evaluating plotted opportunities near growth corridors.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section home-showcase-section" id="investment-lens">
+        <div className="container home-showcase-layout">
+          <div className="home-showcase-copy" data-reveal="left">
+            <p className="eyebrow">Why Dholera Smart City</p>
+            <h2>A professional landing page should sell confidence, not noise.</h2>
+            <p>
+              Dholera is often discussed as a long-horizon growth story. For investors, the important
+              question is whether a specific plot aligns with planning signals, access, paperwork quality,
+              and realistic holding expectations.
+            </p>
+            <div className="home-check-list">
+              {trustSignals.map((item, index) => (
+                <div key={item} className="home-check-item" data-reveal style={revealDelay(index, 80)}>
+                  {item}
                 </div>
               ))}
             </div>
           </div>
-
-          <div className="hero-visual" data-reveal>
-            <div className="hero-photo-stage">
-              <article className="hero-main-photo">
+          <div className="home-showcase-visual" data-reveal="right">
+            <article className="home-feature-photo">
+              <img src={marketImages.aerialPlots} alt="Aerial view of divided land parcels and access roads" />
+              <div className="home-feature-caption">
+                <span className="hero-card-label">Visual Market Story</span>
+                <strong>Plot patterns, access routes, and surrounding context should be visible.</strong>
+              </div>
+            </article>
+            <div className="home-mini-grid">
+              <article className="home-mini-card">
+                <img src={marketImages.residentialGrid} alt="Aerial view of a residential-style development layout" />
+                <div>
+                  <span className="hero-card-label">Planning Context</span>
+                  <p>Serious buyers want to see how development is forming around the land.</p>
+                </div>
+              </article>
+              <article className="home-mini-card home-mini-card-text">
                 <img
                   src={marketImages.industrialCorridor}
-                  alt="Aerial view of industrial buildings and logistics-focused development"
+                  alt="Development corridor view representing confident long-term property positioning"
                 />
-                <div className="hero-photo-overlay">
-                  <span className="hero-note-label">Market View</span>
-                  <strong>Development-backed land stories need visual context.</strong>
-                </div>
-              </article>
-              <div className="hero-photo-grid">
-                <article className="hero-photo-card">
-                  <img
-                    src={marketImages.aerialPlots}
-                    alt="Aerial view of planned land divisions with access roads"
-                  />
-                  <div>
-                    <span className="hero-note-label">Land Layout</span>
-                    <p>Plot positioning and access routes should be easy to understand.</p>
-                  </div>
-                </article>
-                <article className="hero-photo-card">
-                  <img
-                    src={marketImages.residentialGrid}
-                    alt="Aerial view of an organized residential development pattern"
-                  />
-                  <div>
-                    <span className="hero-note-label">Urban Pattern</span>
-                    <p>Professional presentation should show how surrounding development may evolve.</p>
-                  </div>
-                </article>
-              </div>
-            </div>
-            <div className="hero-panel glass-card">
-              <p className="eyebrow">Executive Snapshot</p>
-              <h2>Structured guidance for a market where discipline matters more than excitement.</h2>
-              <p>
-                Dholera continues to draw investor attention because it connects planning ambition,
-                industrial relevance, and infrastructure-led development. The better question is which
-                opportunities still make sense after documentation, fit, and timing are tested properly.
-              </p>
-              <div className="hero-metrics">
-                <article>
-                  <span>Primary focus</span>
-                  <strong>Plotted opportunities with decision clarity</strong>
-                </article>
-                <article>
-                  <span>Advisory method</span>
-                  <strong>Context first, recommendation second</strong>
-                </article>
-                <article>
-                  <span>Buyer outcome</span>
-                  <strong>Confident action with realistic expectations</strong>
-                </article>
-              </div>
-            </div>
-            <div className="hero-aside">
-              <article className="hero-note glass-card">
-                <span className="hero-note-label">What serious buyers ask first</span>
-                <strong>Is the story credible for this exact location?</strong>
-                <p>That is where our evaluation process starts.</p>
+                <span className="hero-card-label">Buyer Outcome</span>
+                <strong>Confident action with realistic expectations.</strong>
+                <p>
+                  Our role is to make the buying process calmer, clearer, and more grounded in practical
+                  fit.
+                </p>
               </article>
             </div>
           </div>
@@ -227,42 +215,20 @@ export default function HomePage() {
 
       <section className="section section-alt">
         <div className="container">
-          <SectionHeader
-            eyebrow="Visual Market Story"
-            title="Imagery that makes the investment narrative feel more credible"
-            description="Professional real estate websites use visuals to reinforce planning, access, and development context. These image blocks help the homepage feel closer to that standard."
-            align="center"
-          />
-          <div className="visual-showcase-grid">
-            {visualShowcase.map((item) => (
-              <article className="showcase-card" key={item.title} data-reveal>
-                <img src={item.image} alt={item.alt} loading="lazy" />
-                <div className="showcase-copy">
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section" id="why-dholera">
-        <div className="container split-feature">
-          <div className="split-content" data-reveal>
-            <p className="eyebrow">Why Dholera Smart City</p>
-            <h2>A planned district where infrastructure and patience matter more than speculation.</h2>
+          <div className="section-heading align-center" data-reveal>
+            <p className="eyebrow">Advisory Advantages</p>
+            <h2>The homepage should feel like a disciplined real estate advisory brand.</h2>
             <p>
-              Dholera is often discussed as a major long-horizon development story. For investors, the
-              important question is not whether the region gets attention, but whether a specific property
-              aligns with planning signals, access, paperwork quality, and realistic timeframes.
+              These are the qualities buyers usually look for before they decide whether a property website
+              feels credible enough to trust.
             </p>
           </div>
-          <div className="benefit-stack">
-            {benefits.map((benefit) => (
-              <article className="glass-card" key={benefit.title} data-reveal>
-                <h3>{benefit.title}</h3>
-                <p>{benefit.text}</p>
+          <div className="home-advantage-grid">
+            {benefits.map((item, index) => (
+              <article key={item.title} className="home-advantage-card" data-reveal style={revealDelay(index)}>
+                <span className="home-card-count">0{index + 1}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
               </article>
             ))}
           </div>
@@ -271,15 +237,17 @@ export default function HomePage() {
 
       <section className="section">
         <div className="container">
-          <SectionHeader
-            eyebrow="Investment Criteria"
-            title="How we frame opportunity before recommending any plot"
-            description="A more professional buying process starts with a repeatable lens. We focus on the factors that matter when capital is expected to stay patient and deliberate."
-            align="center"
-          />
-          <div className="highlight-grid signal-grid">
-            {investmentSignals.map((item) => (
-              <article className="feature-card signal-card" key={item.title} data-reveal>
+          <div className="section-heading align-center" data-reveal>
+            <p className="eyebrow">Investment Criteria</p>
+            <h2>How we frame opportunity before recommending any plot.</h2>
+            <p>
+              A more professional buying process starts with a repeatable lens. We focus on the factors
+              that matter when capital is expected to stay patient and deliberate.
+            </p>
+          </div>
+          <div className="home-criteria-grid">
+            {investmentSignals.map((item, index) => (
+              <article key={item.title} className="home-criteria-card" data-reveal style={revealDelay(index)}>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </article>
@@ -289,33 +257,26 @@ export default function HomePage() {
       </section>
 
       <section className="section section-alt">
-        <div className="container">
-          <SectionHeader
-            eyebrow="Featured Highlights"
-            title="Built around plots, infrastructure signals, and patient capital"
-            description="The strongest opportunities usually sit at the intersection of planning relevance, legal clarity, and an investor's willingness to hold with discipline."
-            align="center"
-          />
-          <div className="highlight-grid">
-            {highlights.map((item) => (
-              <article className="feature-card" key={item.title} data-reveal>
-                <span className="feature-label">{item.label}</span>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
+        <div className="container home-process-layout">
+          <div data-reveal="left">
+            <p className="eyebrow">Featured Highlights</p>
+            <h2>Built around plots, infrastructure signals, and patient capital.</h2>
+            <p className="section-copy">
+              The strongest opportunities usually sit at the intersection of planning relevance, legal
+              clarity, and an investor's willingness to hold with discipline.
+            </p>
+            <div className="home-highlight-stack">
+              {highlights.map((item, index) => (
+                <article key={item.title} className="home-highlight-card" data-reveal style={revealDelay(index, 80)}>
+                  <span className="feature-label">{item.label}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container process-layout">
-          <SectionHeader
-            eyebrow="Advisory Process"
-            title="A cleaner path from initial inquiry to informed action"
-            description="Investors usually need less noise and more structure. Our process is designed to keep each step understandable, traceable, and practical."
-          />
-          <div className="timeline">
+          <div className="home-process-panel" data-reveal="right">
+            <p className="eyebrow">Advisory Process</p>
             {[
               [
                 "01",
@@ -332,8 +293,8 @@ export default function HomePage() {
                 "Support your next step",
                 "From due-diligence questions to coordination, we help keep the buying journey transparent and organized.",
               ],
-            ].map(([number, title, text]) => (
-              <article className="timeline-item" key={number} data-reveal>
+            ].map(([number, title, text], index) => (
+              <article key={number} className="home-process-item" data-reveal style={revealDelay(index, 120)}>
                 <span>{number}</span>
                 <div>
                   <h3>{title}</h3>
@@ -345,24 +306,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section-alt">
-        <div className="container trust-layout">
-          <div data-reveal>
-            <p className="eyebrow">Trust Indicators</p>
+      <section className="section">
+        <div className="container">
+          <div className="section-heading align-center" data-reveal>
+            <p className="eyebrow">Client Confidence</p>
             <h2>Professional confidence grows when the advisory process stays transparent.</h2>
-            <p className="section-copy">
+            <p>
               Buyers choose dholeralands when they want a practical conversation about value, growth
               drivers, risk awareness, and the documents behind the deal.
             </p>
-            <ul className="trust-list">
-              {trustSignals.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
           </div>
-          <div className="testimonial-grid">
-            {testimonials.map((item) => (
-              <article className="glass-card" key={item.author} data-reveal>
+          <div className="home-testimonial-grid">
+            {testimonials.map((item, index) => (
+              <article key={item.author} className="home-testimonial-card" data-reveal style={revealDelay(index)}>
                 <p>"{item.quote}"</p>
                 <strong>{item.author}</strong>
               </article>
@@ -373,7 +329,7 @@ export default function HomePage() {
 
       <section className="section">
         <div className="container">
-          <div className="cta-banner" data-reveal>
+          <div className="home-cta-banner" data-reveal>
             <div>
               <p className="eyebrow">Ready To Evaluate</p>
               <h2>Discuss your investment plan before you commit to a Dholera opportunity.</h2>

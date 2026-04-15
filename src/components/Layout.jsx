@@ -84,7 +84,7 @@ export default function Layout() {
       {
         title: "Reach Us",
         items: [
-          { label: "+91 89800 44556", href: "tel:+918980044556" },
+          { label: "+91 98713 66609", href: "tel:+919871366609" },
           { label: "hello@dholeralands.com", href: "mailto:hello@dholeralands.com" },
           { label: "Ahmedabad, Gujarat", href: "#" },
         ],

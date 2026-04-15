@@ -42,7 +42,7 @@ export default function ContactPage() {
 
       <section className="section">
         <div className="container contact-layout">
-          <article className="glass-card" data-reveal>
+          <article className="glass-card contact-primary-card" data-reveal>
             <h2>Send Us a Message</h2>
             <p className="section-copy">
               Fill out the form and our team will get back to you for a focused discussion.
@@ -97,7 +97,7 @@ export default function ContactPage() {
               <div className="info-list">
                 <div>
                   <span>Phone</span>
-                  <a href="tel:+918980044556">+91 89800 44556</a>
+                  <a href="tel:+919871366609">+91 98713 66609</a>
                 </div>
                 <div>
                   <span>Email</span>

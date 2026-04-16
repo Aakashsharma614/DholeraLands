@@ -16,21 +16,6 @@ const marketImages = {
     "https://images.unsplash.com/photo-1758304481620-464b33d5e4dd?auto=format&fit=crop&w=1600&q=80",
 };
 
-const benefits = [
-  {
-    title: "Location logic over hype",
-    text: "We focus on plotted opportunities backed by corridor access, planning context, and future usability.",
-  },
-  {
-    title: "Documentation-first approach",
-    text: "Every conversation begins with clarity around ownership records, layout details, and process transparency.",
-  },
-  {
-    title: "Built for long-term investors",
-    text: "Our guidance is designed for buyers who want sensible expectations and patient value creation.",
-  },
-];
-
 const investmentSignals = [
   {
     title: "Corridor Positioning",
@@ -43,24 +28,6 @@ const investmentSignals = [
   {
     title: "Execution Readiness",
     text: "The right opportunity is not just well marketed. It should also be understandable, documentable, and practical to evaluate.",
-  },
-];
-
-const highlights = [
-  {
-    label: "Plots",
-    title: "Curated land options for practical entry",
-    text: "Well-positioned plotted inventory for investors seeking flexibility, lower upkeep, and future resale potential.",
-  },
-  {
-    label: "Infrastructure",
-    title: "A market story tied to real development",
-    text: "Dholera draws attention because infrastructure progress can create stronger location relevance over time.",
-  },
-  {
-    label: "Growth Potential",
-    title: "A horizon shaped by industrial expansion",
-    text: "As planning, transport links, and business activity advance, land near growth corridors can gain strategic appeal.",
   },
 ];
 
@@ -213,28 +180,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section-alt">
-        <div className="container">
-          <div className="section-heading align-center" data-reveal>
-            <p className="eyebrow">Advisory Advantages</p>
-            <h2>The homepage should feel like a disciplined real estate advisory brand.</h2>
-            <p>
-              These are the qualities buyers usually look for before they decide whether a property website
-              feels credible enough to trust.
-            </p>
-          </div>
-          <div className="home-advantage-grid">
-            {benefits.map((item, index) => (
-              <article key={item.title} className="home-advantage-card" data-reveal style={revealDelay(index)}>
-                <span className="home-card-count">0{index + 1}</span>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="section">
         <div className="container">
           <div className="section-heading align-center" data-reveal>
@@ -250,56 +195,6 @@ export default function HomePage() {
               <article key={item.title} className="home-criteria-card" data-reveal style={revealDelay(index)}>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-alt">
-        <div className="container home-process-layout">
-          <div data-reveal="left">
-            <p className="eyebrow">Featured Highlights</p>
-            <h2>Built around plots, infrastructure signals, and patient capital.</h2>
-            <p className="section-copy">
-              The strongest opportunities usually sit at the intersection of planning relevance, legal
-              clarity, and an investor's willingness to hold with discipline.
-            </p>
-            <div className="home-highlight-stack">
-              {highlights.map((item, index) => (
-                <article key={item.title} className="home-highlight-card" data-reveal style={revealDelay(index, 80)}>
-                  <span className="feature-label">{item.label}</span>
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-          <div className="home-process-panel" data-reveal="right">
-            <p className="eyebrow">Advisory Process</p>
-            {[
-              [
-                "01",
-                "Understand your goals",
-                "We start with budget, purpose, time horizon, and preferred level of risk before discussing any option.",
-              ],
-              [
-                "02",
-                "Shortlist credible options",
-                "Properties are filtered through location logic, plot utility, and document readiness instead of sales urgency.",
-              ],
-              [
-                "03",
-                "Support your next step",
-                "From due-diligence questions to coordination, we help keep the buying journey transparent and organized.",
-              ],
-            ].map(([number, title, text], index) => (
-              <article key={number} className="home-process-item" data-reveal style={revealDelay(index, 120)}>
-                <span>{number}</span>
-                <div>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                </div>
               </article>
             ))}
           </div>

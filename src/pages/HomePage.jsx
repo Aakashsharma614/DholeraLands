@@ -132,13 +132,23 @@ export default function HomePage() {
       <section className="section home-showcase-section" id="investment-lens">
         <div className="container home-showcase-layout">
           <div className="home-showcase-copy" data-reveal="left">
-            <p className="eyebrow">Why Dholera Smart City</p>
-            <h2>A professional landing page should sell confidence, not noise.</h2>
-            <p>
-              Dholera is often discussed as a long-horizon growth story. For investors, the important
-              question is whether a specific plot aligns with planning signals, access, paperwork quality,
-              and realistic holding expectations.
-            </p>
+            <div className="home-showcase-intro">
+              <p className="eyebrow">Why Dholera Smart City</p>
+              <h2>Clearer market context for serious Dholera land buyers.</h2>
+              <p className="section-copy">
+                Dholera is a long-term infrastructure and planning story, but buyers still need practical
+                clarity on location relevance, document quality, road access, and holding logic before
+                selecting any plot.
+              </p>
+            </div>
+            <div className="home-showcase-stats" data-reveal style={revealDelay(1, 40)}>
+              {marketStats.map((item) => (
+                <article key={item.label} className="home-showcase-stat">
+                  <strong>{item.value}</strong>
+                  <span>{item.label}</span>
+                </article>
+              ))}
+            </div>
             <div className="home-check-list">
               {trustSignals.map((item, index) => (
                 <div key={item} className="home-check-item" data-reveal style={revealDelay(index, 80)}>
@@ -148,31 +158,31 @@ export default function HomePage() {
             </div>
           </div>
           <div className="home-showcase-visual" data-reveal="right">
-            <article className="home-feature-photo">
+            <article className="home-feature-photo home-float-card">
               <img src={marketImages.aerialPlots} alt="Aerial view of divided land parcels and access roads" />
               <div className="home-feature-caption">
-                <span className="hero-card-label">Visual Market Story</span>
-                <strong>Plot patterns, access routes, and surrounding context should be visible.</strong>
+                <span className="hero-card-label">Site Visit Perspective</span>
+                <strong>Buyers should be able to read layout, access, and surrounding development quickly.</strong>
               </div>
             </article>
             <div className="home-mini-grid">
-              <article className="home-mini-card">
+              <article className="home-mini-card home-float-card home-float-card-delayed">
                 <img src={marketImages.residentialGrid} alt="Aerial view of a residential-style development layout" />
                 <div>
                   <span className="hero-card-label">Planning Context</span>
-                  <p>Serious buyers want to see how development is forming around the land.</p>
+                  <p>Visible road structure and nearby activity help buyers understand whether the location story is credible.</p>
                 </div>
               </article>
-              <article className="home-mini-card home-mini-card-text">
+              <article className="home-mini-card home-mini-card-text home-float-card">
                 <img
                   src={marketImages.industrialCorridor}
                   alt="Development corridor view representing confident long-term property positioning"
                 />
                 <span className="hero-card-label">Buyer Outcome</span>
-                <strong>Confident action with realistic expectations.</strong>
+                <strong>More grounded decisions with fewer surprises later.</strong>
                 <p>
-                  Our role is to make the buying process calmer, clearer, and more grounded in practical
-                  fit.
+                  We aim to replace pressure-based selling with a cleaner advisory process and realistic
+                  market framing.
                 </p>
               </article>
             </div>

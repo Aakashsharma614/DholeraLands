@@ -10,7 +10,7 @@ import {
 import { zoneDirectory } from "../data/zones";
 
 const heroImage =
-  "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80";
+  "/images/home-poster.jpeg";
 
 const serviceCards = [
   {
@@ -77,7 +77,7 @@ export default function HomePage() {
 
       <section className="reference-hero">
         <div className="reference-hero-media">
-          <img src={heroImage} alt="Aerial development view representing plotted land investment in Dholera" />
+          <img src={heroImage} alt="Residential development poster used as the homepage background" />
         </div>
         <div className="reference-hero-overlay" />
         <div className="container reference-hero-content">

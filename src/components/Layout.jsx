@@ -9,34 +9,42 @@ const navItems = [
   { label: "Contact", to: "/contact" },
 ];
 
-function Brand() {
+const footerContacts = [
+  { icon: "P", content: <a href="tel:+919054108068">+91 9054108068</a> },
+  {
+    icon: "E",
+    content: (
+      <>
+        <a href="mailto:buydholera@gmail.com">buydholera@gmail.com</a>
+        <a href="mailto:info@buydholera.com">info@buydholera.com</a>
+      </>
+    ),
+  },
+  {
+    icon: "L",
+    content: (
+      <p>
+        606, Earth Arise,
+        <br />
+        YMCA Club Road, S G Highway,
+        <br />
+        Ahmedabad 380051
+        <br />
+        Gujarat India
+      </p>
+    ),
+  },
+];
+
+function Brand({ footer = false }) {
   return (
-    <NavLink className="brand" to="/">
-      <span className="brand-mark">DL</span>
+    <NavLink className={`brand ${footer ? "brand-footer" : ""}`} to="/">
+      <img className="brand-mark" src="/images/logo.png" alt="Dholera Lands logo" />
       <span>
         <strong>dholeralands</strong>
-        <small>Strategic Smart City Realty</small>
+        <small>{footer ? "Property Advisory & Land Investment" : "Strategic Smart City Realty"}</small>
       </span>
     </NavLink>
-  );
-}
-
-function FooterLinkGroup({ title, items }) {
-  return (
-    <div>
-      <h3>{title}</h3>
-      {items.map((item) =>
-        item.href.startsWith("/") ? (
-          <NavLink key={item.label} to={item.href}>
-            {item.label}
-          </NavLink>
-        ) : (
-          <a key={item.label} href={item.href}>
-            {item.label}
-          </a>
-        )
-      )}
-    </div>
   );
 }
 
@@ -76,23 +84,7 @@ export default function Layout() {
     return () => observer.disconnect();
   }, [location.pathname]);
 
-  const footerGroups = useMemo(
-    () => [
-      {
-        title: "Pages",
-        items: navItems.map((item) => ({ label: item.label, href: item.to })),
-      },
-      {
-        title: "Reach Us",
-        items: [
-          { label: "+91 98713 66609", href: "tel:+919871366609" },
-          { label: "hello@dholeralands.com", href: "mailto:hello@dholeralands.com" },
-          { label: "Ahmedabad, Gujarat", href: "#" },
-        ],
-      },
-    ],
-    []
-  );
+  const footerNav = useMemo(() => navItems, []);
 
   return (
     <div className="site-shell">
@@ -132,17 +124,45 @@ export default function Layout() {
       </main>
 
       <footer className="site-footer">
-        <div className="container footer-grid">
-          <div>
-            <Brand />
-            <p>
-              dholeralands presents original, investor-friendly information for buyers exploring plotted
-              opportunities around Dholera Smart City.
-            </p>
+        <div className="footer-panel">
+          <div className="container footer-grid">
+            <div className="footer-contact-column">
+              <Brand footer />
+              <div className="footer-contact-list">
+                {footerContacts.map((item) => (
+                  <div key={item.icon} className="footer-contact-row">
+                    <span className="footer-contact-icon" aria-hidden="true">
+                      {item.icon}
+                    </span>
+                    <div className="footer-contact-content">{item.content}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="footer-map-column">
+              <div className="footer-map-frame">
+                <iframe
+                  title="Dholera Lands office map"
+                  src="https://www.google.com/maps?q=Earth%20Arise%2C%20YMCA%20Club%20Road%2C%20S%20G%20Highway%2C%20Ahmedabad&z=16&output=embed"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            </div>
           </div>
-          {footerGroups.map((group) => (
-            <FooterLinkGroup key={group.title} title={group.title} items={group.items} />
-          ))}
+        </div>
+        <div className="footer-bottom-strip">
+          <div className="container footer-bottom-content">
+            <p>© dholeralands</p>
+            <div className="footer-bottom-links">
+              {footerNav.map((item) => (
+                <NavLink key={item.to} to={item.to}>
+                  {item.label}
+                </NavLink>
+              ))}
+            </div>
+          </div>
         </div>
       </footer>
     </div>

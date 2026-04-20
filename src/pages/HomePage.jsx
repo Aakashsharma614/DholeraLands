@@ -7,6 +7,7 @@ import {
   ServiceCard,
   ZoneCard,
 } from "../components/home/HomeSections";
+import { zoneDirectory } from "../data/zones";
 
 const heroImage =
   "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80";
@@ -31,7 +32,7 @@ const serviceCards = [
     description: "Understand usage, FSI or FAR, and permissions before shortlisting a plot.",
     image:
       "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80",
-    link: "/about",
+    link: "/zones",
   },
 ];
 
@@ -59,36 +60,7 @@ const processCards = [
   },
 ];
 
-const zoneCards = [
-  "Agriculture Zone",
-  "City Center Zone",
-  "Green Space Zone",
-  "High Access Corridor Zone",
-  "Industrial Zone",
-  "Knowledge And IT Zone",
-  "Logistic Zone",
-  "Public Facilities Zone",
-  "Residential Zone",
-  "Solar Park Zone",
-  "Strategic Infrastructure Zone",
-  "Tourism & Resorts Zone",
-].map((title, index) => ({
-  title,
-  image: `https://images.unsplash.com/photo-${[
-    "1448630360428-65456885c650",
-    "1477959858617-67f85cf4f1df",
-    "1500530855697-b586d89ba3ee",
-    "1511818966892-d7d671e672a2",
-    "1513828583688-c52646db42da",
-    "1497366754035-f200968a6e72",
-    "1489515217757-5fd1be406fef",
-    "1494526585095-c41746248156",
-    "1460317442991-0ec209397118",
-    "1509395176047-4a66953fd231",
-    "1494526585095-c41746248156",
-    "1500534623283-312aade485b7",
-  ][index]}?auto=format&fit=crop&w=900&q=80`,
-}));
+const zoneCards = zoneDirectory;
 
 const villages = ["Bhangadh", "Bhimtalav", "Dholera", "Hebatpur"];
 const linearityOptions = ["Linear", "Non-Linear"];
@@ -191,7 +163,7 @@ export default function HomePage() {
           />
           <div className="reference-zone-grid">
             {zoneCards.map((card, index) => (
-              <ZoneCard key={card.title} {...card} delay={index * 55} />
+              <ZoneCard key={card.slug} {...card} link={`/zones/${card.slug}`} delay={index * 55} />
             ))}
           </div>
         </div>

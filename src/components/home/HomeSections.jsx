@@ -67,7 +67,7 @@ export function SearchPanel({ villages, linearityOptions, zones, townPlanningOpt
           </select>
         </label>
       </div>
-      <Link className="button button-primary reference-search-button" to="/contact">
+      <Link className="button button-primary reference-search-button" to="/zones">
         Search Now
       </Link>
     </div>
@@ -103,13 +103,13 @@ export function ProcessCard({ title, description, image, delay }) {
   );
 }
 
-export function ZoneCard({ title, image, delay }) {
+export function ZoneCard({ title, image, delay, link }) {
   return (
-    <article className="reference-zone-card" data-reveal style={{ "--reveal-delay": `${delay}ms` }}>
+    <Link className="reference-zone-card reference-zone-card-link" to={link} data-reveal style={{ "--reveal-delay": `${delay}ms` }}>
       <img src={image} alt={title} />
       <div className="reference-zone-label">
         <span>{title}</span>
       </div>
-    </article>
+    </Link>
   );
 }

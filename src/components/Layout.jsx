@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 
 const navItems = [
   { label: "Home", to: "/" },
+  { label: "Zones", to: "/zones" },
   { label: "About", to: "/about" },
   { label: "Blog", to: "/blog" },
   { label: "Contact", to: "/contact" },

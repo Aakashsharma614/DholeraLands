@@ -1,251 +1,198 @@
 import { Link } from "react-router-dom";
 import Meta from "../components/Meta";
+import {
+  HomeSectionIntro,
+  ProcessCard,
+  SearchPanel,
+  ServiceCard,
+  ZoneCard,
+} from "../components/home/HomeSections";
 
-const marketStats = [
-  { value: "Long-term", label: "investment horizon" },
-  { value: "Documentation-led", label: "screening approach" },
-  { value: "Buyer-first", label: "advisory style" },
-];
+const heroImage =
+  "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80";
 
-const marketImages = {
-  aerialPlots:
-    "https://images.unsplash.com/photo-1720175369915-d941b2394228?auto=format&fit=crop&w=1400&q=80",
-  residentialGrid:
-    "https://images.unsplash.com/photo-1647313063997-f6afa7e30157?auto=format&fit=crop&w=1200&q=80",
-  industrialCorridor:
-    "https://images.unsplash.com/photo-1758304481620-464b33d5e4dd?auto=format&fit=crop&w=1600&q=80",
-};
-
-const investmentSignals = [
+const serviceCards = [
   {
-    title: "Corridor Positioning",
-    text: "We assess whether a plot sits within a believable growth narrative shaped by access, infrastructure sequencing, and surrounding activity.",
+    title: "Property Valuation",
+    description: "Know the right value of your property before you buy or sell in Dholera.",
+    image:
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80",
+    link: "/contact",
   },
   {
-    title: "Asset Fit",
-    text: "Every recommendation should match the buyer's budget, intended holding period, risk comfort, and future flexibility.",
+    title: "Legal Title Check",
+    description: "Get property checked for clean title and no legal claim or bank attachment.",
+    image:
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80",
+    link: "/contact",
   },
   {
-    title: "Execution Readiness",
-    text: "The right opportunity is not just well marketed. It should also be understandable, documentable, and practical to evaluate.",
-  },
-];
-
-const trustSignals = [
-  "Transparent discussions before site visits",
-  "Support for NRIs and first-time land buyers",
-  "Structured guidance from shortlist to closure",
-  "Clear communication focused on long-term value",
-];
-
-const testimonials = [
-  {
-    quote:
-      "The process felt calm and informed. I was given context, not pressure, which made the final decision much easier.",
-    author: "Business Owner, Mumbai",
-  },
-  {
-    quote:
-      "As an NRI, I needed clarity more than promises. dholeralands explained the area, the timing, and the paperwork clearly.",
-    author: "NRI Investor, Dubai",
-  },
-  {
-    quote:
-      "The shortlist was practical and aligned to my budget. That saved time and removed a lot of confusion.",
-    author: "First-Time Buyer, Ahmedabad",
+    title: "Know Zones",
+    description: "Understand usage, FSI or FAR, and permissions before shortlisting a plot.",
+    image:
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80",
+    link: "/about",
   },
 ];
 
-function revealDelay(index, offset = 0) {
-  return { "--reveal-delay": `${offset + index * 90}ms` };
-}
+const processCards = [
+  {
+    title: "Evaluate",
+    description:
+      "Review fair market value, access, surrounding development, and the overall fit before progressing to the next step.",
+    image:
+      "https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    title: "Meet Your Agent",
+    description:
+      "Work with one clear point of contact who helps you compare options, collect documents, and understand each location properly.",
+    image:
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    title: "Close The Deal",
+    description:
+      "Move from shortlist to closure with support on documentation, agreements, and the final buyer-seller handoff.",
+    image:
+      "https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&w=1200&q=80",
+  },
+];
+
+const zoneCards = [
+  "Agriculture Zone",
+  "City Center Zone",
+  "Green Space Zone",
+  "High Access Corridor Zone",
+  "Industrial Zone",
+  "Knowledge And IT Zone",
+  "Logistic Zone",
+  "Public Facilities Zone",
+  "Residential Zone",
+  "Solar Park Zone",
+  "Strategic Infrastructure Zone",
+  "Tourism & Resorts Zone",
+].map((title, index) => ({
+  title,
+  image: `https://images.unsplash.com/photo-${[
+    "1448630360428-65456885c650",
+    "1477959858617-67f85cf4f1df",
+    "1500530855697-b586d89ba3ee",
+    "1511818966892-d7d671e672a2",
+    "1513828583688-c52646db42da",
+    "1497366754035-f200968a6e72",
+    "1489515217757-5fd1be406fef",
+    "1494526585095-c41746248156",
+    "1460317442991-0ec209397118",
+    "1509395176047-4a66953fd231",
+    "1494526585095-c41746248156",
+    "1500534623283-312aade485b7",
+  ][index]}?auto=format&fit=crop&w=900&q=80`,
+}));
+
+const villages = ["Bhangadh", "Bhimtalav", "Dholera", "Hebatpur"];
+const linearityOptions = ["Linear", "Non-Linear"];
+const zones = ["Residential", "Industrial", "City Center", "Tourism"];
+const townPlanningOptions = ["TP-1", "TP-2", "TP-3", "TP-4"];
 
 export default function HomePage() {
   return (
     <>
       <Meta
-        title="dholeralands | Invest in the Future of Smart Cities"
-        description="Explore original real estate insights, plotted opportunities, and investor guidance around Dholera Smart City with dholeralands."
+        title="dholeralands | Buy Dholera Style Investment Homepage"
+        description="Explore a Dholera investment homepage inspired by buydholera.com with zone discovery, valuation guidance, and legal support."
       />
 
-      <section className="home-hero">
-        <img
-          className="home-hero-image"
-          src={marketImages.industrialCorridor}
-          alt="Aerial view of industrial buildings and logistics-focused development near Dholera"
-        />
-        <div className="home-hero-overlay" />
-        <div className="container home-hero-content">
-          <div className="home-hero-copy" data-reveal="left">
-            <div className="home-hero-topline">
-              <span className="home-badge">Dholera Smart City Focus</span>
-              <span className="home-badge home-badge-muted">Investor-first land advisory</span>
-            </div>
-            <p className="eyebrow">Professional Land Guidance</p>
-            <h1>Find the Dholera opportunity that actually fits your long-term strategy.</h1>
-            <p className="home-hero-text">
-              dholeralands helps buyers evaluate plotted opportunities through clearer market framing,
-              documentation-led screening, and practical support that reduces noise before capital is
-              committed.
-            </p>
-            <div className="home-hero-actions">
-              <Link className="button button-primary" to="/contact">
-                Get Strategic Guidance
-              </Link>
-              <a className="button button-secondary" href="#investment-lens">
-                Explore The Market Lens
-              </a>
-            </div>
-            <div className="hero-search-panel" data-reveal style={revealDelay(1, 120)}>
-              <div>
-                <span>Focus Area</span>
-                <strong>Dholera plotted land</strong>
-              </div>
-              <div>
-                <span>Buyer Type</span>
-                <strong>NRI, family, and long-term investors</strong>
-              </div>
-              <Link className="button button-primary" to="/contact">
-                Book A Call
-              </Link>
-            </div>
-          </div>
-
-          <div className="home-hero-aside" data-reveal="right" style={revealDelay(2, 120)}>
-            <article className="hero-floating-card hero-market-card">
-              <span className="hero-card-label">Executive Snapshot</span>
-              <strong>Clarity beats urgency in emerging land markets.</strong>
-              <p>
-                The better Dholera decision comes from testing location logic, documents, and time horizon
-                before reacting to marketing hype.
-              </p>
-            </article>
-            <article className="hero-floating-card hero-contact-card">
-              <span className="hero-card-label">Speak With dholeralands</span>
-              <strong>+91 98713 66609</strong>
-              <p>Guidance for serious buyers evaluating plotted opportunities near growth corridors.</p>
-            </article>
-          </div>
+      <section className="reference-hero">
+        <div className="reference-hero-media">
+          <img src={heroImage} alt="Aerial development view representing plotted land investment in Dholera" />
         </div>
-      </section>
-
-      <section className="section home-showcase-section" id="investment-lens">
-        <div className="container home-showcase-layout">
-          <div className="home-showcase-copy" data-reveal="left">
-            <div className="home-showcase-intro">
-              <p className="eyebrow">Why Dholera Smart City</p>
-              <h2>Clearer market context for serious Dholera land buyers.</h2>
-              <p className="section-copy">
-                Dholera is a long-term infrastructure and planning story, but buyers still need practical
-                clarity on location relevance, document quality, road access, and holding logic before
-                selecting any plot.
-              </p>
-            </div>
-            <div className="home-showcase-stats" data-reveal style={revealDelay(1, 40)}>
-              {marketStats.map((item) => (
-                <article key={item.label} className="home-showcase-stat">
-                  <strong>{item.value}</strong>
-                  <span>{item.label}</span>
-                </article>
-              ))}
-            </div>
-            <div className="home-check-list">
-              {trustSignals.map((item, index) => (
-                <div key={item} className="home-check-item" data-reveal style={revealDelay(index, 80)}>
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="home-showcase-visual" data-reveal="right">
-            <article className="home-feature-photo home-float-card">
-              <img src={marketImages.aerialPlots} alt="Aerial view of divided land parcels and access roads" />
-              <div className="home-feature-caption">
-                <span className="hero-card-label">Site Visit Perspective</span>
-                <strong>Buyers should be able to read layout, access, and surrounding development quickly.</strong>
-              </div>
-            </article>
-            <div className="home-mini-grid">
-              <article className="home-mini-card home-float-card home-float-card-delayed">
-                <img src={marketImages.residentialGrid} alt="Aerial view of a residential-style development layout" />
-                <div>
-                  <span className="hero-card-label">Planning Context</span>
-                  <p>Visible road structure and nearby activity help buyers understand whether the location story is credible.</p>
-                </div>
-              </article>
-              <article className="home-mini-card home-mini-card-text home-float-card">
-                <img
-                  src={marketImages.industrialCorridor}
-                  alt="Development corridor view representing confident long-term property positioning"
-                />
-                <span className="hero-card-label">Buyer Outcome</span>
-                <strong>More grounded decisions with fewer surprises later.</strong>
-                <p>
-                  We aim to replace pressure-based selling with a cleaner advisory process and realistic
-                  market framing.
-                </p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <div className="section-heading align-center" data-reveal>
-            <p className="eyebrow">Investment Criteria</p>
-            <h2>How we frame opportunity before recommending any plot.</h2>
+        <div className="reference-hero-overlay" />
+        <div className="container reference-hero-content">
+          <div className="reference-hero-copy" data-reveal="left">
+            <p className="eyebrow">Dholera Land Marketplace</p>
+            <h1>Looking For Investment In Dholera ?</h1>
             <p>
-              A more professional buying process starts with a repeatable lens. We focus on the factors
-              that matter when capital is expected to stay patient and deliberate.
+              Discover property services, compare zones, and move from search to closure with a
+              cleaner buyer journey modeled on the reference website.
             </p>
           </div>
-          <div className="home-criteria-grid">
-            {investmentSignals.map((item, index) => (
-              <article key={item.title} className="home-criteria-card" data-reveal style={revealDelay(index)}>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
+          <SearchPanel
+            villages={villages}
+            linearityOptions={linearityOptions}
+            zones={zones}
+            townPlanningOptions={townPlanningOptions}
+          />
+        </div>
+      </section>
+
+      <section className="section reference-services">
+        <div className="container">
+          <div className="reference-service-grid">
+            {serviceCards.map((card, index) => (
+              <ServiceCard key={card.title} {...card} delay={index * 90} />
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section reference-process-section">
         <div className="container">
-          <div className="section-heading align-center" data-reveal>
-            <p className="eyebrow">Client Confidence</p>
-            <h2>Professional confidence grows when the advisory process stays transparent.</h2>
-            <p>
-              Buyers choose dholeralands when they want a practical conversation about value, growth
-              drivers, risk awareness, and the documents behind the deal.
-            </p>
+          <div className="reference-process-header">
+            <HomeSectionIntro
+              eyebrow="How It Works"
+              title="A familiar Dholera buying flow with clearer structure and tighter spacing."
+              description="The reference homepage guides users from first evaluation through agent support and final closure. This version keeps that same UX sequence but turns it into reusable React sections."
+            />
           </div>
-          <div className="home-testimonial-grid">
-            {testimonials.map((item, index) => (
-              <article key={item.author} className="home-testimonial-card" data-reveal style={revealDelay(index)}>
-                <p>"{item.quote}"</p>
-                <strong>{item.author}</strong>
-              </article>
+          <div className="reference-process-grid">
+            {processCards.map((card, index) => (
+              <ProcessCard key={card.title} {...card} delay={index * 90} />
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <div className="home-cta-banner" data-reveal>
-            <div>
-              <p className="eyebrow">Ready To Evaluate</p>
-              <h2>Discuss your investment plan before you commit to a Dholera opportunity.</h2>
-              <p>
-                Let's talk through your budget, investment horizon, and the type of plotted opportunity
-                that fits your plan.
-              </p>
-            </div>
+          <div className="reference-process-action" data-reveal>
             <Link className="button button-primary" to="/contact">
-              Speak With dholeralands
+              Get Consultation
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="reference-legal-banner" data-reveal>
+            <div className="reference-legal-copy">
+              <p className="eyebrow">Right Legal Advice</p>
+              <h2>Right legal advice today will save your big cost tomorrow.</h2>
+              <p>
+                Keep the same mid-page CTA pattern from the reference homepage and direct users into
+                documentation or legal support without adding friction.
+              </p>
+            </div>
+            <div className="reference-legal-actions">
+              <Link className="button button-primary" to="/contact">
+                Property Lawyer
+              </Link>
+              <Link className="button button-secondary" to="/contact">
+                Get Property Document
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section reference-zone-section">
+        <div className="container">
+          <HomeSectionIntro
+            eyebrow="Know Your Zone"
+            title="Zone discovery cards arranged like the source homepage."
+            description="The reference site ends with a dense visual zone grid. This rebuild keeps that browsing pattern while using reusable card components and consistent alignment."
+            align="center"
+          />
+          <div className="reference-zone-grid">
+            {zoneCards.map((card, index) => (
+              <ZoneCard key={card.title} {...card} delay={index * 55} />
+            ))}
           </div>
         </div>
       </section>
